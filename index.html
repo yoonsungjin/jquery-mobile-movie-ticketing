@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CINEMAX movie ticketing</title>
+        <meta charset="utf-8">
+        <meta content="en" http-equiv="content-language">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+		<!-- Google Map API -->
+		<script type="text/javascript" src="http://maps.google.com/maps/api/js?v=3&sensor=false&language=en"></script>
+        
+        <!-- date picket API-->
+        <link rel="stylesheet" href="jquery.ui.datepicker.mobile.css" /> 
+        <script>
+            //reset type=date inputs to text
+            $( document ).bind( "mobileinit", function(){
+                $.mobile.page.prototype.options.degradeInputs.date = true;
+            });	
+        </script>
+  
+        <script src="jQuery.ui.datepicker.js"></script>
+        <script src="jquery.ui.datepicker.mobile.js"></script>
+
+        <script src="js/script.js"></script> 
+        <script src="js/map.js"></script> 
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        
+        <style>
+            li img { max-width: 50px; }
+            .detail_image { width : 240px; height : 360px;}
+        </style>
+    </head>
+    <body>
+
+        <!-- Main page-->        
+        <div data-role="page" id="main_page" class="type-home ui-page ui-body-x ui-page-footer-fixed ui-page-active" data-theme="x" data-url="/index.html;jsessionid=4ED3C32108A90CB49EB7036C91B3E136.jvm5?0" tabindex="0" >
+            <header data-role="header" data-theme="b" >
+                <center><img style="margin-top: 7px; padding-top: 0px;" src="images/mlogo.png" width="150px"></center>
+            </header>
+            <div data-role="content" style="padding:15px;">
+                <ul data-role="listview" data-inset="true" data-filter="false">
+                    <li id="now"><a href="#now_playing">Now Playing</a></li>
+                    <li><a href="#viewticketpage">Retrieve Ticket</a></li>
+                    <li><a href="#aboutus">About Us</a></li>
+                    <li><a href="#contactus">Contact Us</a></li>
+                    <li><a href="#map_page">Location</a></li>
+                </ul>
+                </div>
+            <footer data-role="footer" data-theme="b" style="text-align: center" data-position="fixed">
+                <nav data-role="navbar">
+                    <ul>
+                        <li><a href="#main_page">Home</a></li>
+                        <li><a href="#contactus">Contact</a></li>
+                    </ul>
+                </nav>
+                <p>Sungjin Yoon &copy; 2018</p>
+            </footer>
+                
+        </div>
+        <!-- Now Playing page-->
+        <div data-role="page" id="now_playing">
+            <header data-role="header" data-theme="b">
+                <h1>Now Playing</h1>
+                <a href="#main_page" class="ui-btn">Back</a>
+            </header>
+            <div data-role="content" style="padding:15px;">
+                <ul data-role="listview" id="movielist"  data-split-theme="d" data-filter="true">
+                    <!-- movie list goes here-->
+                </ul>   
+            </div>
+            <footer data-role="footer" data-theme="b" style="text-align: center" data-position="fixed">
+                <nav data-role="navbar">
+                    <ul>
+                        <li><a href="#main_page">Home</a></li>
+                        <li><a href="#contactus">Contact</a></li>
+                    </ul>
+                </nav>
+                <p>Sungjin Yoon &copy; 2018</p>
+            </footer>
+        </div>
+
+        <!-- Movie Detail Page-->
+        <div data-role="page" id="details">
+            <header data-role="header" data-theme="b">
+                <h1>CinePlex</h1>
+                <a href="#now_playing" class="ui-btn">Back</a>
+            </header>
+            <div data-role="content" style="padding:15px;">
+                <section id="moviedetail">
+                     <!-- movie detail goes here-->
+                </section>         
+                <a href="#reservation" class="ui-btn">Buy Ticket</a>
+            </div>
+            <footer data-role="footer" data-theme="b" style="text-align: center" data-position="fixed">
+                <nav data-role="navbar">
+                    <ul>
+                        <li><a href="#main_page">Home</a></li>
+                        <li><a href="#contactus">Contact</a></li>
+                    </ul>
+                </nav>
+                <p>Sungjin Yoon &copy; 2018</p>
+            </footer>
+        </div>
+ 
+        <!-- Reservation Page-->
+        <div data-role="page" id="reservation">
+            <header data-role="header" data-theme="b">
+                <h1>Reservation</h1>
+                <a href="#now_playing" class="ui-btn">Back</a>
+            </header>
+            <div data-role="content" style="padding:15px;">
+                    <label for="movieselect" class="select">Movie</label>
+                    <select name="select-choice-1" id="movieselect">    
+                        <!-- movie option tag will display here-->
+                    </select>
+                    <input type="date" data-clear-btn="false" name="date1" id="date1" value="">	
+                    <fieldset data-role="controlgroup" data-type="horizontal">
+                        <input type="radio" name="movietime" id="movietimea" value="11:10AM">
+                        <label for="movietimea">11:00AM</label>
+                        <input type="radio" name="movietime" id="movietimeb" value="4:30PM">
+                        <label for="movietimeb">4:30PM</label>
+                        <input type="radio" name="movietime" id="movietimec" value="7:30PM">
+                        <label for="movietimec">7:30PM</label>
+                    </fieldset>
+                    <button id="confirm" class="ui-btn ui-corner-all">Confirm</button>
+                    <a href="#viewticketpage" class="ui-btn">View Ticket</a>
+            </div>
+            <footer data-role="footer" data-theme="b" style="text-align: center" data-position="fixed">
+                <nav data-role="navbar">
+                    <ul>
+                        <li><a href="#main_page">Home</a></li>
+                        <li><a href="#contactus">Contact</a></li>
+                    </ul>
+                </nav>
+                <p>Sungjin Yoon &copy; 2018</p>
+            </footer>
+        </div>
+
+        <!-- view ticket page-->
+        <div data-role="page" id="viewticketpage">
+            <header data-role="header" data-theme="b">
+                <h1>Ticket Information</h1>
+                <a href="#reservation" class="ui-btn">Back</a>
+
+            </header>
+            <div data-role="content" style="padding:15px;">
+                <img src="images/ticket.png" max-width="300px">
+                <div id="view">
+                    <!-- Ticket info goes here-->
+                </div>
+            
+            </div>
+            <footer data-role="footer" data-theme="b" style="text-align: center" data-position="fixed">
+                <nav data-role="navbar">
+                    <ul>
+                        <li><a href="#main_page">Home</a></li>
+                        <li><a href="#contactus">Contact</a></li>
+                    </ul>
+                </nav>
+                <p>Sungjin Yoon &copy; 2018</p>
+            </footer>
+        </div>
+
+        <!-- about us page-->
+        <div data-role="page" id="aboutus">
+            <header data-role="header" data-theme="b">
+                <h1>About us</h1>
+                <a href="#main_page" class="ui-btn">Back</a>
+            </header>
+            <div data-role="content" style="padding:15px;">
+                <h3>About Cinemax</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ut ultrices enim. Mauris sit amet tempus risus. Fusce eget augue porttitor dolor eleifend dictum quis ut justo. Sed posuere faucibus congue. Phasellus dapibus fermentum diam. Praesent at nulla non ligula fringilla pharetra quis eu arcu. Morbi dictum leo orci. Sed rutrum bibendum dolor, ut sollicitudin purus sagittis sed. Suspendisse nec tempus dui, aliquam tincidunt nulla. Proin ornare quis turpis quis porttitor. Etiam in dolor at ex lobortis scelerisque. Nullam congue enim et ante volutpat dignissim. Morbi at sapien dui.</p>
+                <img src="images/aboutus.jpg" style="height:100%"/>
+            
+            </div>
+            <footer data-role="footer" data-theme="b" style="text-align: center" data-position="fixed">
+                <nav data-role="navbar">
+                    <ul>
+                        <li><a href="#main_page">Home</a></li>
+                        <li><a href="#contactus">Contact</a></li>
+                    </ul>
+                </nav>
+                <p>Sungjin Yoon &copy; 2018</p>
+            </footer>
+        </div>
+            <!-- contact us page-->
+            <div data-role="page" id="contactus">
+                <header data-role="header" data-theme="b">
+                    <h1>Contact Us</h1>
+                    <a href="#main_page" class="ui-btn">Back</a>
+                </header>
+                <div data-role="content" style="padding:15px;">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ut ultrices enim. Mauris sit amet tempus risus. 
+                        Fusce eget augue porttitor dolor eleifend dictum quis ut justo. Sed posuere faucibus congue. </p>
+                    <P>Street Address</P>
+                    <p>City, Country</p>
+                    <p><a href="tel:+4169018355" class="ui-btn ui-icon-phone ui-btn-icon-top">Call Us</a></p>
+                    <p><a href="mailto:movie@sheridancollege.ca?subject=jQueryTestMail%20Test&body=This%20is%20a%20test." 
+                        class="ui-btn ui-icon-mail ui-btn-icon-top">Email Us</a></p>
+                </div>
+                <footer data-role="footer" data-theme="b" style="text-align: center" data-position="fixed">
+                    <nav data-role="navbar">
+                        <ul>
+                            <li><a href="#main_page">Home</a></li>
+                            <li><a href="#contactus">Contact</a></li>
+                        </ul>
+                    </nav>
+                    <p>Sungjin Yoon &copy; 2018</p>
+                </footer>
+            </div>
+
+        <!-- location page-->
+        <div data-role="page" id="map_page">
+                <header data-role="header" data-theme="b">
+                    <h1>Contact Us</h1>
+                    <a href="#main_page" class="ui-btn">Back</a>
+                </header>
+                <div data-role="content" style="padding:15px;">
+                    <div id="map_canvas" style="height:300px;"></div>
+            
+                    <div data-role="fieldcontain">
+                        <label for="from">From</label> 
+                        <input type="text" id="from" value="Sheridan College, Oakville, ON Canada"/>
+                    </div>
+                    
+                    <div data-role="fieldcontain">
+                        <label for="to">To</label> 
+                        <input type="text" id="to" value="Cineplex Cinemas Mississauga"/>
+                    </div>
+                    
+                    <div data-role="fieldcontain">
+                        <label for="mode" class="select">Transportation method:</label>
+                        <select name="select-choice-0" id="mode">
+                            <option value="DRIVING">Driving</option>
+                            <option value="WALKING">Walking</option>
+                            <option value="BICYCLING">Bicycling</option>
+                        </select>
+                    </div>
+                    
+                    <a class="ui-btn ui-icon-search ui-btn-icon-bottom" href="#" id="submit">Get directions</a>
+    
+                    <div id="results" style="display:none;">
+                        <div id="directions"></div>
+                    </div>
+                </div>
+                <footer data-role="footer" data-theme="b" style="text-align: center" data-position="fixed">
+                    <nav data-role="navbar">
+                        <ul>
+                            <li><a href="#main_page">Home</a></li>
+                            <li><a href="#contactus">Contact</a></li>
+                        </ul>
+                    </nav>
+                    <p>Sungjin Yoon &copy; 2018</p>
+                </footer>
+            </div>
+    
+    </body>
+</html>

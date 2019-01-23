@@ -1,0 +1,46 @@
+{	
+	"mov" : 
+	[
+		{
+			"title" : "Creed 2",
+			"url" : "images/creed2.jpg",
+			"release" : "NOVEMBER 21, 2018",
+			"length" : "2h 10m",
+			"genre" : "Drama",
+			"synopsis" : "Life has become a balancing act for Adonis Creed. Between personal obligations and training for his next big fight, he is up against the challenge of his life. Facing an opponent with ties to his family's past only intensifies his impending battle in the ring. Rocky Balboa is there by his side through it all and, together, Rocky and Adonis will confront their shared legacy, question what's worth fighting for, and discover that nothing's more important than family. Creed II is about going back to basics to rediscover what made you a champion in the first place, and remembering that, no matter where you go, you can't escape your history.",
+			"iframe" : "u22BXhMu4tI"
+		},
+		{
+			"title" : "Green Book",
+			"url" : "images/greenbook.jpg",
+			"release" : "NOVEMBER 21, 2018",
+			"length" : "2h 11m",
+			"genre" : "Drama",
+			"synopsis" : "A working-class Italian-American bouncer becomes the driver of an African-American classical pianist on a tour of venues through the 1960s American South.",
+			"iframe" : "QkZxoko_HC0"
+
+		},
+		{
+			"title" : "Robin Hood",
+			"url" : "images/robinhood.jpg",
+			"release" : "NOVEMBER 21, 2018",
+			"length" : "1h 56m",
+			"genre" : "Action, Adventure",
+			"synopsis" : "A war-hardened Crusader and a Moorish commander mount an audacious revolt against the corrupt English crown in a thrilling action-adventure from director Otto Bathurst ('Peaky Blinders'). Packed with gritty battlefield exploits, mind-blowing fight choreography, and a timeless romance, ROBIN HOOD is a never before seen story of how Robin Hood became the icon and legend as we know him today.",
+			"iframe" : "ne7eStct3Fc"
+			
+		},
+		{
+			"title" : "Fantastic Beasts: The Crimes Of Grindelwald",
+			"url" : "images/fantasticbeasts.jpg",
+			"release" : "NOVEMBER 16, 2018",
+			"length" : "2h 14m",
+			"genre" : "Adventure, Family, Fantasy",
+			"synopsis" : "Warner Bros. Pictures FANTASTIC BEASTS: THE CRIMES OF GRINDELWALD is the second of five all new adventures in J.K. Rowling's Wizarding World. At the end of the first film, the powerful Dark wizard Gellert Grindelwald (Johnny Depp) was captured by MACUSA (Magical Congress of the United States of America), with the help of Newt Scamander (Eddie Redmayne). But, making good on his threat, Grindelwald escaped custody and has set about gathering followers, most unsuspecting of his true agenda: to raise pure-blood wizards up to rule over all non-magical beings.",
+			"iframe" : "vvFybpmyB9E"
+		}
+		
+	]
+
+}
+
